@@ -14,9 +14,11 @@
   Built for individuals who need absolute, non-negotiable discipline.
 </p>
 
----
-
 </div>
+
+> [!NOTE]
+> ### 🤡 What is this?
+> Let's be real: you have zero dopamine receptor integrity left and your attention span is fried beyond recognition. This app is an anti-goon device-admin hostage situation disguised as a Pomodoro timer. It locks your phone, bounces you to Home when you get itchy thumbs, and locks the Android Settings app so you can't even force-stop or uninstall it mid-session. There is no cancel button. There is no safe word. Suffer and study.
 
 > [!CAUTION]
 > ### ⚠️ HARD LOCKOUT WARNING — READ BEFORE USE
