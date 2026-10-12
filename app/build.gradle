@@ -1,0 +1,89 @@
+plugins {
+    id 'com.android.application'
+}
+
+// Signing secrets live outside the project tree, beside the .jks they unlock, so that a
+// single ACL boundary covers both halves instead of splitting them across directories.
+// Set COCKBLOCKER_KEYSTORE_PROPERTIES to override the location. The in-tree path is kept
+// only as a fallback for contributors without a release key; it is gitignored.
+def releasePropsFile = {
+    def override = System.getenv('COCKBLOCKER_KEYSTORE_PROPERTIES')
+    if (override != null && !override.trim().isEmpty()) {
+        return new File(override.trim())
+    }
+    def external = new File(System.getProperty('user.home'), '.cockblocker/keystore.properties')
+    if (external.exists()) {
+        return external
+    }
+    return rootProject.file('keystore.properties')
+}()
+def releaseProps = new Properties()
+def hasReleaseSigning = releasePropsFile.exists()
+if (hasReleaseSigning) {
+    releasePropsFile.withInputStream { releaseProps.load(it) }
+}
+def requiredReleaseKeys = ['storeFile', 'storePassword', 'keyAlias', 'keyPassword', 'expectedSigningSha256']
+def missingReleaseKeys = requiredReleaseKeys.findAll { !releaseProps[it] }
+def expectedSigningSha256 = releaseProps.getProperty('expectedSigningSha256', '')
+def releaseRequested = gradle.startParameter.taskNames.any { it.toLowerCase().contains('release') }
+if (releaseRequested && (!hasReleaseSigning || !missingReleaseKeys.isEmpty() || expectedSigningSha256.trim().isEmpty())) {
+    throw new GradleException('Release requires keystore.properties with a private key and expectedSigningSha256')
+}
+
+android {
+    namespace 'com.cockblocker.app'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.cockblocker.app'
+        minSdk 26
+        targetSdk 35
+        versionCode 1
+        versionName '1.0'
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        buildConfigField 'String', 'EXPECTED_SIGNING_SHA256', "\"${expectedSigningSha256}\""
+    }
+
+    signingConfigs {
+        if (hasReleaseSigning) {
+            release {
+                storeFile rootProject.file(releaseProps['storeFile'])
+                storePassword releaseProps['storePassword']
+                keyAlias releaseProps['keyAlias']
+                keyPassword releaseProps['keyPassword']
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-debug'
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    packaging {
+        resources {
+            excludes += ['/META-INF/{AL2.0,LGPL2.1}']
+        }
+    }
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+}

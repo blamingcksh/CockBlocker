@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Cockblocker" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">@color/cockblocker_background</item>
+        <item name="android:navigationBarColor">@color/cockblocker_background</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:colorAccent">@color/cockblocker_primary</item>
+        <item name="android:colorBackground">@color/cockblocker_background</item>
+        <item name="android:windowBackground">@color/cockblocker_background</item>
+        <item name="android:textColorPrimary">@color/cockblocker_text</item>
+        <item name="android:textColorSecondary">@color/cockblocker_secondary_text</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>

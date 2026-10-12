@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cockblocker</string>
+
+    <string name="main_title">Cockblocker</string>
+    <string name="idle_heading">Ready for a Pomodoro focus session</string>
+    <string name="active_heading">Focus session active</string>
+    <string name="arming_heading">Preparing session</string>
+    <string name="released_heading">Session complete</string>
+    <string name="remaining_none">No active countdown</string>
+    <string name="remaining_format">%1$s remaining</string>
+    <string name="health_idle">Idle — nothing is being blocked</string>
+    <string name="health_active">Active — signed timer and enforcement state are healthy</string>
+    <string name="health_degraded">Degraded — a required capability needs attention; the session has not ended</string>
+    <string name="health_tampered">Integrity warning — recovery is required; the session has not ended</string>
+    <string name="health_arming">Preparing — enforcement has not started yet</string>
+    <string name="health_released">Released — app blocking is off</string>
+
+    <string name="disclosure_title">Before you start</string>
+    <string name="disclosure_body">Cockblocker redirects selected app launches back to this Home screen, and it can launch the apps you allow straight from this screen. Settings is locked while a session runs unless you allow it as an exception. It cannot guarantee that an app never flashes, and Android, root, ADB, force-stop, safe mode, and device recovery can bypass it. Each focus block ends only when its signed, monotonic timer reaches zero. Breaks unlock apps automatically, and the next focus begins automatically; there is intentionally no early focus release.\n\nAccessibility access is used to read foreground app package names only. Cockblocker does not read screen text, inspect page content, or synthesize taps. Notification access lets Android deliver notification package and key metadata; content and text are discarded, and no notification history is stored. Usage Access exposes recent app-activity events, which may be delayed or incomplete; only the latest foreground package and timestamp are retained in memory. The overlay provides a brief, non-deceptive redirect while an app is blocked. No network or advertising code is used.</string>
+    <string name="selection_title">App selection</string>
+    <string name="selection_help">Check apps to allow. Unchecked launchable apps are blocked, including Settings unless you allow it here. Apps marked Cannot block are safety-critical and can never be selected for blocking.</string>
+    <string name="selection_empty">No launchable apps were found.</string>
+    <string name="critical_label">Cannot block</string>
+    <string name="show_installed_apps">Installed apps</string>
+    <string name="start_15_minutes">START POMODORO</string>
+    <string name="start_blocked">Complete every setup item first</string>
+    <string name="arming_notice">Preparing. Do not leave this screen until setup is confirmed.</string>
+
+    <string name="setup_title">Setup status</string>
+    <string name="setup_pass">Ready</string>
+    <string name="setup_action">Fix</string>
+    <string name="setup_unknown">Checking…</string>
+    <string name="setup_complete_message">All required setup checks pass.</string>
+    <string name="activation_failed">Session could not be prepared. Setup state has not been changed.</string>
+    <string name="debug_build_cannot_start">This is a debug build. Install the signed release APK to start a session.</string>
+
+    <string name="accessibility_service_description">Cockblocker uses foreground app package names to return selected blocked apps to Home. It does not read screen content or control taps.</string>
+    <string name="notification_listener_description">Cockblocker discards notification content and uses package/key metadata only to cancel selected blocked-app notifications on a best-effort basis.</string>
+    <string name="usage_access_reason">Cockblocker uses Usage Access only as a delayed fallback for the latest foreground app package. It does not store usage history.</string>
+    <string name="usage_access_title">Usage Access explanation</string>
+    <string name="usage_access_body">Android’s Usage Access setting exposes recent app-activity events to Cockblocker. Events can be delayed or missing. Cockblocker retains only the latest foreground package and timestamp in memory, never activity history, and never uses it as the sole enforcement layer.</string>
+    <string name="open_usage_access_settings">Open Usage Access settings</string>
+    <string name="return_home">Return to Cockblocker</string>
+
+    <string name="notification_channel_name">Focus session status</string>
+    <string name="notification_channel_description">Visible focus-session countdown and integrity health</string>
+    <string name="notification_title">Cockblocker</string>
+    <string name="notification_break">Pomodoro break • %1$s remaining</string>
+    <string name="notification_active">Focus session • %1$s remaining</string>
+    <string name="notification_degraded">Focus session degraded • %1$s remaining</string>
+    <string name="notification_tampered">Integrity warning • %1$s remaining</string>
+    <string name="notification_arming">Preparing focus session</string>
+    <string name="notification_idle">Cockblocker is ready</string>
+    <string name="accessibility_open_settings">Open accessibility settings</string>
+    <string name="device_admin_description">Optional optimization for supported Android versions. Cockblocker cannot lock the device, wipe data, or change passwords.</string>
+</resources>

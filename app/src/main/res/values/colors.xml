@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="cockblocker_background">#FF070A12</color>
+    <color name="cockblocker_surface">#FF0E1422</color>
+    <color name="cockblocker_surface_raised">#FF161E32</color>
+    <color name="cockblocker_primary">#FF79A7FF</color>
+    <color name="cockblocker_primary_secondary">#FF9B82FF</color>
+    <color name="cockblocker_primary_pressed">#FF668FE2</color>
+    <color name="cockblocker_primary_dim">#FF293756</color>
+    <color name="cockblocker_on_primary">#FF07101F</color>
+    <color name="cockblocker_text">#FFF2F4FF</color>
+    <color name="cockblocker_secondary_text">#FF9AA5C2</color>
+    <color name="cockblocker_tertiary_text">#FF6D7897</color>
+    <color name="cockblocker_divider">#FF222C45</color>
+    <color name="cockblocker_ready">#FF65DB91</color>
+    <color name="cockblocker_warning">#FFF6BE73</color>
+    <color name="cockblocker_danger">#FFFF747C</color>
+    <color name="cockblocker_disabled">#FF4A5879</color>
+    <color name="cockblocker_launcher_background">#FF0B1222</color>
+</resources>
